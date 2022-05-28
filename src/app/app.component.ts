@@ -5,23 +5,23 @@ import { AccountService } from './_services/account.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'The Dating App';
-  users: any;
+export class AppComponent implements OnInit{
+  title = 'Client';
+  users:any;
 
-  constructor ( private accountService :AccountService){}
-  ngOnInit(){
-    this.setCurrentUser(); //revisa si ya existe algo almacenado
+  constructor(private accountService: AccountService){
+
   }
 
-  //vemos si esta almacenado en el local storage
+  ngOnInit(): void {
+      this.setCurrentUser();
+  }
+
   setCurrentUser(){
-    const user:User =  JSON.parse(localStorage.getItem('user'));
+    const user: User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
-
-
 
 }
